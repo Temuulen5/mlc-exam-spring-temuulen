@@ -71,7 +71,7 @@ public class RouteController {
         return "redirect:/";
     }
 
-    @GetMapping("details/{id}")
+    @GetMapping("/details/{id}")
     public String getRouteDetail(Model model, @PathVariable("id") Long id) {
         routeService.FindMostCommentedRoute();
         if (mostCommentedRoute.getId().equals(id)) {

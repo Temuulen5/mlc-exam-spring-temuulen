@@ -33,4 +33,5 @@ public class Route {
     private List<Category> category;
 
     private String videoUrl;
+
 }

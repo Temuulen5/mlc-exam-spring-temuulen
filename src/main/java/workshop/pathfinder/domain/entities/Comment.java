@@ -16,8 +16,8 @@ public class Comment {
 
     private Date created;
 
-    @Lob
     private String textContent;
+
     @ManyToOne
     private User author;
 
