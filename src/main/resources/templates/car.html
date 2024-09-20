@@ -1,0 +1,45 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+        <div th:replace="navigation/fragment"></div>
+    </header>
+
+    <section class="road">
+        <div>
+            <h2>Car</h2>
+            <p>Crude ideas and designs of automobiles can be traced back to ancient and medieval times.[1][2] In 1649, Hans Hautsch of Nuremberg built a clockwork-driven carriage.[1][3] In 1672, a small-scale steam-powered vehicle was created;[4] the first steam-powered automobile capable of human transportation was built by Nicolas-Joseph Cugnot in 1769.[5][6] Inventors began to branch out at the start of the 19th century, creating the de Rivaz engine, one of the first internal combustion engines,[7] and an early electric motor.[8] Samuel Brown later tested the first industrially applied internal combustion engine in 1826. Only two of these were made.[9]</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+        <img class="rounded-circle w-75 ml-5" src="/images/pic3.jpg" alt="Title image">
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>

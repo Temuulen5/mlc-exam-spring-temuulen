@@ -1,0 +1,49 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+        <div th:replace="navigation/fragment"></div>
+    </header>
+
+    <section class="road">
+        <div>
+            <h2>Pedestrian</h2>
+            <p>Pedestrianisation might be considered as a process of removing vehicular traffic from city streets or restricting vehicular access to streets for use by pedestrians, to improve the environment and safety.[13]
+
+                Efforts are under way by pedestrian advocacy groups to restore pedestrian access to new developments, especially to counteract newer developments, 20% to 30% of which in the United States do not include footpaths. Some activists advocate large pedestrian zones where only pedestrians, or pedestrians and some non-motorised vehicles, are allowed. Many urbanists have extolled the virtues of pedestrian streets in urban areas. In the US the proportion of households without a car is 8%, but a notable exception is New York City, the only locality in the United States where more than half of all households do not own a car (the figure is even higher in Manhattan, over 75%).[14]
+
+                The use of cars for short journeys is officially discouraged in many parts of the world, and construction or separation of dedicated walking routes in city centres receives a high priority in many large cities in Western Europe, often in conjunction with public transport enhancements. In Copenhagen, the world's longest pedestrian shopping area, Strøget, has been developed over the last 40 years, principally due to the work of Danish architect Jan Gehl, a principle of urban design known as copenhagenisation.</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+        <img class="rounded-circle w-75 ml-5" src="/images/pic1.jpg" alt="Title image">
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>

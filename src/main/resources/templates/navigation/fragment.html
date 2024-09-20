@@ -1,0 +1,42 @@
+<header xmlns:th="http://www.thymeleaf.org" th:fragment="navigation">
+    <nav class="main-nav">
+        <ul>
+            <th:block th:if="${@LoggedUser.id==null}">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
+                <li>
+                    <a href="/users/login">Login</a>
+                </li>
+
+                <li>
+                    <a href="/users/register">Register</a>
+                </li>
+
+                <li>
+                    <a href="/about">About</a>
+                </li>
+            </th:block>
+
+            <th:block th:unless="${@LoggedUser.id==null}" th:object="${@LoggedUser}">
+                <li>
+                    <a href="/routes/add">Add new route</a>
+                </li>
+
+                <li>
+                    <a th:href="@{users/profile/{id}(id=${@LoggedUser.id})}">Profile</a>
+                </li>
+
+                <li>
+                    <a th:href="@{/users/logout}">Logout</a>
+                </li>
+                <!--                    <th:block th:if="${@LoggedUser.role=='ADMIN'}">-->
+                <!--                        <li>-->
+                <!--                            <a href="/">Admin</a>-->
+                <!--                        </li>-->
+                <!--                    </th:block>-->
+            </th:block>
+        </ul>
+    </nav>
+</header>

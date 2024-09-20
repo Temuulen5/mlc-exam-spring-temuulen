@@ -1,0 +1,51 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+        <div th:replace="navigation/fragment"></div>
+    </header>
+
+    <section class="road">
+        <div>
+            <h2>Motorcycle</h2>
+            <p>The first internal combustion, petroleum fueled motorcycle was the Daimler Reitwagen. It was designed and built by the German inventors Gottlieb Daimler and Wilhelm Maybach in Bad Cannstatt, Germany, in 1885.[10] This vehicle was unlike either the safety bicycles or the boneshaker bicycles of the era in that it had zero degrees of steering axis angle and no fork offset, and thus did not use the principles of bicycle and motorcycle dynamics developed nearly 70 years earlier. Instead, it relied on two outrigger wheels to remain upright while turning.[11]
+
+                The inventors called their invention the Reitwagen ("riding car"). It was designed as an expedient testbed for their new engine, rather than a true prototype vehicle.[12][13]
+
+
+                Butler's Patent Velocycle
+                The first commercial design for a self-propelled cycle was a three-wheel design called the Butler Petrol Cycle, conceived of Edward Butler in England in 1884.[14] He exhibited his plans for the vehicle at the Stanley Cycle Show in London in 1884. The vehicle was built by the Merryweather Fire Engine company in Greenwich, in 1888.[15]</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+        <img class="rounded-circle w-75 ml-5" src="/images/pic3.jpg" alt="Title image">
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,49 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+        <div th:replace="navigation/fragment"></div>
+    </header>
+
+    <section class="road">
+        <div>
+            <h2>Bicycle</h2>
+            <p>There are several early, but unverified claims for the invention of the bicycle.
+
+                A sketch from around 1500 AD is attributed to Gian Giacomo Caprotti, a pupil of Leonardo da Vinci, but it was described by Hans-Erhard Lessing in 1998 as a purposeful fraud, a description now generally accepted.[1][2][3] However, the authenticity of the bicycle sketch is still vigorously maintained by followers of Augusto Marinoni, a lexicographer and philologist, who was entrusted by the Commissione Vinciana of Rome with the transcription of Leonardo's Codex Atlanticus.[4][5]
+
+                Later, and equally unverified, is the contention that a certain "Comte de Sivrac" developed a célérifère in 1792, demonstrating it at the Palais-Royal in France. The célérifère supposedly had two wheels set on a rigid wooden frame and no steering, directional control being limited to that attainable by leaning.[6] A rider was said to have sat astride the machine and pushed it along using alternate feet. It is now thought that the two-wheeled célérifère never existed (though there were four-wheelers) and it was instead a misinterpretation by the well-known French journalist Louis Baudry de Saunier in 1891.[7][8]</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+        <img class="rounded-circle w-75 ml-5" src="/images/pic4.jpg" alt="Title image">
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>

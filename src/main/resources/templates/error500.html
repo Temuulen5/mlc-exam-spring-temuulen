@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Server Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/images/500server.gif');
+            background-size: cover;
+            background-position: center;
+            color: #f8d7da;
+            text-align: center;
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+        p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(50, 50, 50, 0.8); /* Dark semi-transparent background */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #dc3545; /* Bootstrap danger color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Server Error</h1>
+    <p th:text="|Error: ${message}|"></p>
+    <a href="javascript:history.back()" class="back-button">Go Back</a>
+</div>
+</body>
+</html>
