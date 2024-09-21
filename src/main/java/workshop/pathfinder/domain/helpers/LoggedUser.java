@@ -7,7 +7,7 @@ import workshop.pathfinder.domain.enums.Role;
 public class LoggedUser {
     private Long id;
     private String fullName;
-    private Role role;
+    private String role;
     private int age;
     private String username;
 

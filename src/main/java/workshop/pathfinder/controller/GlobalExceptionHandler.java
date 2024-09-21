@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
     private final static String UNAVAILABLE_USERNAME = "[Username is not valid]]";
     private final static String LOGIN_ERROR_2 = "[Invalid user]]";
     private final static String LOGIN_ERROR_1 = "during isValid call";
+    private final static String INPUT_SIZE_ERROR = " [size must be between 10 and 2147483647]";
 
 //    @ExceptionHandler(Exception.class)
 //    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -34,6 +35,8 @@ public class GlobalExceptionHandler {
             message = "Username is not valid please try another one!";
         } else if (ex.getMessage().contains(LOGIN_ERROR_1) || ex.getMessage().contains(LOGIN_ERROR_2)) {
             message = "Username or password is wrong please try again!";
+        } else if (ex.getMessage().contains(INPUT_SIZE_ERROR)) {
+            message = "Description size must be at least 10 characters!";
         } else {
             message = ex.getMessage();
         }

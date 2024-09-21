@@ -2,13 +2,14 @@ package workshop.pathfinder.domain.DTOs;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import workshop.pathfinder.domain.enums.Role;
 import workshop.pathfinder.validation.checkUniqueUser.ValidateUserName;
 import workshop.pathfinder.validation.passwardMatcher.PasswordMatch;
 
 @Data
 @PasswordMatch
 @ValidateUserName
-public class UserRegisterBindingModel {
+public class UserRegisterForm {
     @NotNull
     @Size(min = 3)
     private String userName;
@@ -23,4 +24,5 @@ public class UserRegisterBindingModel {
     private String password;
     @Size(min = 5, max = 20)
     private String confirmPassword;
+    private String role;
 }

@@ -87,5 +87,4 @@ public class RouteController {
         }
         return "route-details";
     }
-
 }

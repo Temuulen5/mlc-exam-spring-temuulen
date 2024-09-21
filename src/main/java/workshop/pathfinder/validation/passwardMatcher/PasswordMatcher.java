@@ -2,9 +2,9 @@ package workshop.pathfinder.validation.passwardMatcher;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import workshop.pathfinder.domain.DTOs.UserRegisterBindingModel;
+import workshop.pathfinder.domain.DTOs.UserRegisterForm;
 
-public class PasswordMatcher implements ConstraintValidator<PasswordMatch, UserRegisterBindingModel> {
+public class PasswordMatcher implements ConstraintValidator<PasswordMatch, UserRegisterForm> {
 
     @Override
     public void initialize(PasswordMatch constraintAnnotation) {
@@ -12,15 +12,15 @@ public class PasswordMatcher implements ConstraintValidator<PasswordMatch, UserR
     }
 
     @Override
-    public boolean isValid(UserRegisterBindingModel userRegisterBindingModel, ConstraintValidatorContext context) {
+    public boolean isValid(UserRegisterForm userRegisterForm, ConstraintValidatorContext context) {
 
-        if (userRegisterBindingModel.getPassword() != null &&
-            userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
+        if (userRegisterForm.getPassword() != null &&
+            userRegisterForm.getPassword().equals(userRegisterForm.getConfirmPassword())) {
             return true;
         }
 
         context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
-                .addPropertyNode(userRegisterBindingModel.getConfirmPassword())
+                .addPropertyNode(userRegisterForm.getConfirmPassword())
                 .addConstraintViolation()
                 .disableDefaultConstraintViolation();
 

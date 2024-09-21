@@ -2,10 +2,10 @@ package workshop.pathfinder.validation.checkUniqueUser;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import workshop.pathfinder.domain.DTOs.UserRegisterBindingModel;
+import workshop.pathfinder.domain.DTOs.UserRegisterForm;
 import workshop.pathfinder.repository.UserRepository;
 
-public class UserExistenceValidator implements ConstraintValidator<ValidateUserName, UserRegisterBindingModel> {
+public class UserExistenceValidator implements ConstraintValidator<ValidateUserName, UserRegisterForm> {
 
     private final UserRepository userRepository;
 
@@ -20,7 +20,7 @@ public class UserExistenceValidator implements ConstraintValidator<ValidateUserN
     }
 
     @Override
-    public boolean isValid(UserRegisterBindingModel userRegisterBindingModel, ConstraintValidatorContext constraintValidatorContext) {
-        return !userRepository.existsByUsername(userRegisterBindingModel.getUserName());
+    public boolean isValid(UserRegisterForm userRegisterForm, ConstraintValidatorContext constraintValidatorContext) {
+        return !userRepository.existsByUsername(userRegisterForm.getUserName());
     }
 }

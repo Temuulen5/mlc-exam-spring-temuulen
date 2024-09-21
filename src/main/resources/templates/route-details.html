@@ -116,8 +116,9 @@
                 <h4>All Comments</h4>
                 <div th:each="comment : ${allComments}">
                     <div class="comment">
-                        <p th:text="${comment.textContent}"></p>
                         <small th:text="${#dates.format(comment.created, 'dd/MM/yyyy HH:mm')}"></small>
+                        <p th:text="${comment.textContent}"></p>
+
                     </div>
                 </div>
             </div>

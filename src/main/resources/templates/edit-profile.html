@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <div th:replace="navigation/fragment"></div>
+</header>
+
+<main class="p-5 bg-blur">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <h4 class="text-center">Edit Profile</h4>
+                <form th:action="@{{id} (id = ${@LoggedUser.id})}" th:object="${profileEditForm}" th:method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" th:field="*{userName}" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" th:field="*{age}" class="form-control" id="age" name="age" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <a href="path/to/profile.html" class="btn btn-outline-secondary ms-3">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

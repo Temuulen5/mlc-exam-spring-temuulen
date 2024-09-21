@@ -104,6 +104,19 @@
                                class="invalid-feedback  form-text bg-danger rounded">Must be valid age</small>
                     </div>
                 </div>
+
+                <div>
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select id="level" th:field="*{role}" class="custom-select">
+                            <option value="USER" selected>Select level</option>
+                            <option value="USER" text="USER">USER</option>
+                            <option value="ADMIN" text="ADMIN">ADMIN</option>
+                            <option value="MODERATOR" text="MODERATOR">MODERATOR</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div>
                     <div class="col-auto">
                         <label for="inputPassword" class="col-form-label ">Password</label>
@@ -139,7 +152,7 @@
                                aria-describedby="confirmPasswordHelpInline">
                         <small th:if="${#fields.hasErrors('confirmPassword')}"
                                th:errors="${PasswordMissMatch}"
-                                id="confirmPasswordError"
+                               id="confirmPasswordError"
                                class="invalid-feedback  form-text bg-danger rounded">
                             Password length must be between 5 and 20 characters and passwords should match.
                         </small>
