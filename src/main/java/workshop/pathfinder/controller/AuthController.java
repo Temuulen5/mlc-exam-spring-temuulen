@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import workshop.pathfinder.STATIC.ErrorMessages;
 import workshop.pathfinder.domain.helpers.LoggedUser;
 import workshop.pathfinder.domain.DTOs.UserLoginForm;
 import workshop.pathfinder.domain.DTOs.UserRegisterBindingModel;
@@ -44,8 +43,6 @@ public class AuthController {
     public String register(Model model, Model error) {
         if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
-            error.addAttribute("UnavailableUserName", ErrorMessages.USERNAME_NOT_VALID);
-            error.addAttribute("PasswordMissMatch", ErrorMessages.USER_PASSWORD_MISS_MATCH);
         }
         return "register";
     }

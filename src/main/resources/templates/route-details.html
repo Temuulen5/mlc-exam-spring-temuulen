@@ -24,7 +24,8 @@
     </header>
 
     <input type="hidden" name="routeId" id="routeId">
-    <div class="details-main" th:method="POST" th:action="@{/routes/details/${mostCommentedRoute.id}}" th:object="${mostCommentedRoute}">
+    <div class="details-main" th:method="POST" th:action="@{/routes/details/${mostCommentedRoute.id}}"
+         th:object="${mostCommentedRoute}">
         <section class="route-info text-center">
             <h4 id="track-name"></h4>
             <p>Author name: <span th:field="*{author.getUsername()}" id="authorName"></span></p>
@@ -70,23 +71,27 @@
             <img class="rounded" src="/images/pic4.jpg" height="100%" alt="">
             <img class="rounded" src="/images/pic1.jpg" height="100%" alt="">
         </section>
+
         <section class="comments">
             <h1>Comments</h1>
 
             <div>
-                <!-- Comments submission -->
-                <form id="commentForm" method="POST"
-                      action="/">
+                <!-- I want to show all the comments here -->
+                <form id="commentForm" th:method="POST"
+                      th:action="@{/comments/add}" th:object="${commentAddForm}">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
                         <label for="message">Message</label>
                         <textarea name="message"
                                   id="message"
+                                  th:field="*{textContent}"
                                   cols="30"
                                   rows="5"
                                   class="form-control"
                                   style="background-color: white;"></textarea>
-                        <small id="messageError" class="invalid-feedback">
+                        <small th:if="${#fields.hasErrors('textContent')}"
+                               th:errors="*{textContent}"
+                               id="messageError" class="invalid-feedback">
                             Message should be at least 10 characters.
                         </small>
                     </div>
@@ -104,9 +109,20 @@
             <!-- All comments section -->
             <div>
 
-                <span id="commentCtnr"><!-- Comments section, filled in by script --></span>
+                <span id="commentCtnr"><!-- Comments section, filled in by script -->></span>
             </div>
-            <!-- EO: All comments section -->
+
+            <div id="commentsSection">
+                <h4>All Comments</h4>
+                <div th:each="comment : ${allComments}">
+                    <div class="comment">
+                        <p th:text="${comment.textContent}"></p>
+                        <small th:text="${#dates.format(comment.created, 'dd/MM/yyyy HH:mm')}"></small>
+                    </div>
+                </div>
+            </div>
+
+
         </section>
         <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
     </div>

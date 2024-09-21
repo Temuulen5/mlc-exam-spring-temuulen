@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import workshop.pathfinder.domain.DTOs.CommentAddForm;
 import workshop.pathfinder.domain.DTOs.RouteAddForm;
 import workshop.pathfinder.domain.helpers.LoggedUser;
 import workshop.pathfinder.domain.helpers.MostCommentedRoute;
+import workshop.pathfinder.repository.CommentRepository;
 import workshop.pathfinder.repository.RouteRepository;
 import workshop.pathfinder.service.RouteService;
 
@@ -19,17 +21,20 @@ public class RouteController {
     private final LoggedUser loggedUser;
     private final MostCommentedRoute mostCommentedRoute;
     private final ModelMapper modelMapper;
+    private final CommentRepository commentRepository;
 
     public RouteController(RouteRepository routeRepository,
                            RouteService routeService,
                            LoggedUser loggedUser,
                            MostCommentedRoute mostCommentedRoute,
-                           ModelMapper modelMapper) {
+                           ModelMapper modelMapper,
+                           CommentRepository commentRepository) {
         this.routeRepository = routeRepository;
         this.routeService = routeService;
         this.loggedUser = loggedUser;
         this.mostCommentedRoute = mostCommentedRoute;
         this.modelMapper = modelMapper;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping("")
@@ -76,6 +81,9 @@ public class RouteController {
         routeService.FindMostCommentedRoute();
         if (mostCommentedRoute.getId().equals(id)) {
             model.addAttribute("mostCommentedRoute", this.mostCommentedRoute);
+            model.addAttribute("commentAddForm", new CommentAddForm());
+            model.addAttribute("allComments",
+                    commentRepository.findAllByRoute(routeRepository.findRouteById(mostCommentedRoute.getId())));
         }
         return "route-details";
     }
