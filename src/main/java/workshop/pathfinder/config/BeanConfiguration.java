@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
 import workshop.pathfinder.domain.helpers.LoggedUser;
 import workshop.pathfinder.domain.helpers.MostCommentedRoute;
+import workshop.pathfinder.domain.helpers.IdRouteDetail;
 
 @Configuration
 public class BeanConfiguration {
@@ -24,5 +25,11 @@ public class BeanConfiguration {
     @SessionScope
     public LoggedUser LoggedUser() {
         return new LoggedUser();
+    }
+
+    @Bean
+    @SessionScope
+    public IdRouteDetail routeDetailId() {
+        return new IdRouteDetail();
     }
 }

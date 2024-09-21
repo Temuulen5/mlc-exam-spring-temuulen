@@ -1,10 +1,11 @@
 <header xmlns:th="http://www.thymeleaf.org" th:fragment="navigation">
     <nav class="main-nav">
         <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
             <th:block th:if="${@LoggedUser.id==null}">
-                <li>
-                    <a href="/">Home</a>
-                </li>
+
 
                 <li>
                     <a href="/users/login">Login</a>

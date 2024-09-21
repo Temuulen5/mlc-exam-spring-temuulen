@@ -8,6 +8,7 @@ import workshop.pathfinder.domain.DTOs.CommentAddForm;
 import workshop.pathfinder.domain.DTOs.RouteAddForm;
 import workshop.pathfinder.domain.helpers.LoggedUser;
 import workshop.pathfinder.domain.helpers.MostCommentedRoute;
+import workshop.pathfinder.domain.helpers.IdRouteDetail;
 import workshop.pathfinder.repository.CommentRepository;
 import workshop.pathfinder.repository.RouteRepository;
 import workshop.pathfinder.service.RouteService;
@@ -22,19 +23,16 @@ public class RouteController {
     private final MostCommentedRoute mostCommentedRoute;
     private final ModelMapper modelMapper;
     private final CommentRepository commentRepository;
+    private final IdRouteDetail idRouteDetail;
 
-    public RouteController(RouteRepository routeRepository,
-                           RouteService routeService,
-                           LoggedUser loggedUser,
-                           MostCommentedRoute mostCommentedRoute,
-                           ModelMapper modelMapper,
-                           CommentRepository commentRepository) {
+    public RouteController(RouteRepository routeRepository, RouteService routeService, LoggedUser loggedUser, MostCommentedRoute mostCommentedRoute, ModelMapper modelMapper, CommentRepository commentRepository, IdRouteDetail idRouteDetail) {
         this.routeRepository = routeRepository;
         this.routeService = routeService;
         this.loggedUser = loggedUser;
         this.mostCommentedRoute = mostCommentedRoute;
         this.modelMapper = modelMapper;
         this.commentRepository = commentRepository;
+        this.idRouteDetail = idRouteDetail;
     }
 
     @GetMapping("")
@@ -78,13 +76,23 @@ public class RouteController {
 
     @GetMapping("/details/{id}")
     public String getRouteDetail(Model model, @PathVariable("id") Long id) {
-        routeService.FindMostCommentedRoute();
-        if (mostCommentedRoute.getId().equals(id)) {
-            model.addAttribute("mostCommentedRoute", this.mostCommentedRoute);
-            model.addAttribute("commentAddForm", new CommentAddForm());
-            model.addAttribute("allComments",
-                    commentRepository.findAllByRoute(routeRepository.findRouteById(mostCommentedRoute.getId())));
-        }
+        idRouteDetail.setId(id);
+        model.addAttribute("route", routeRepository.getRouteById(id));
+        model.addAttribute("commentAddForm", new CommentAddForm());
+        model.addAttribute("allComments",
+                commentRepository.findAllByRoute(routeRepository.findRouteById(id)));
+
         return "route-details";
     }
+
+    @GetMapping("all")
+    public String getAllRoutes(Model model) {
+        model.addAttribute("allRoutes", routeRepository.findRoutesByAuthor_Id(this.loggedUser.getId()));
+        return "routes";
+    }
+
+//    @ModelAttribute
+//    public List<Route> getAllRoute() {
+//        return routeRepository.findAll();
+//    }
 }

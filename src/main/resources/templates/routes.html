@@ -24,16 +24,15 @@
         <div th:replace="navigation/fragment"></div>
     </header>
 
-    <section class="road">
-        <img src="/images/pic4.jpg" alt="Title image">
+    <section class="road" th:each="route : ${allRoutes}" th:object="${route}">
+        <img src="/images/pic3.jpg" alt="Title image">
         <div>
-            <h2>Your Route</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
-                non repellendus?
-                Quae atque vero modi quidem! Autem cupiditate fugit doloribus ad amet, asperiores provident commodi.</p>
-            <a th:href="@{/routes}" class="btn">Learn More</a>
+            <h2 th:text="*{name}">Your Route</h2>
+            <p th:text="*{description}"></p>
+            <a th:href="@{/routes/details/{id}(id=*{id})}" class="btn">Learn More</a>
         </div>
     </section>
+
 </div>
 <!-- Wrapper Ends -->
 </body>
