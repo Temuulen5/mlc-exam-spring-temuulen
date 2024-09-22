@@ -55,7 +55,6 @@ public class UserService {
 
                 //saving data
                 this.userRepository.save(user);
-                System.err.println("REGISTERED USER :" + user.toString());
             }
         }
     }
@@ -66,7 +65,6 @@ public class UserService {
             modelMapper.map(user, this.loggedUser);
             Role role = user.getRoles().get(0).getRole();
             loggedUser.setRole(role.toString());
-            System.err.println("USER LOGGED WITH ID:" + loggedUser.getId());
         }
     }
 
@@ -77,6 +75,5 @@ public class UserService {
         this.userRepository.saveAndFlush(user);
         this.loggedUser.Logout();
         this.modelMapper.map(user, this.loggedUser);
-        System.err.println("EDITED PROFILE FOR ID:" + loggedUser.getId());
     }
 }

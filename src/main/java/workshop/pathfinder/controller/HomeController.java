@@ -41,7 +41,6 @@ public class HomeController {
         this.routeService.FindMostCommentedRoute();
         model.addAttribute("mostCommentedRoute", this.mostCommentedRoute);
 
-        System.err.println(this.mostCommentedRoute);
         return "index";
     }
 

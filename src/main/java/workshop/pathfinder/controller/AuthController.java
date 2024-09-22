@@ -35,7 +35,6 @@ public class AuthController {
     @GetMapping("/logout")
     public String logout() {
         this.loggedUser.Logout();
-        System.err.println("User logged out successfully!");
         return "redirect:/";
     }
 

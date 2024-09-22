@@ -46,6 +46,5 @@ public class CommentService {
         comment.setCreated(new Date());
         comment.setTextContent(commentAddForm.getTextContent());
         this.commentRepository.save(comment);
-        System.err.printf("Comment with id %s added\n", comment.getId());
     }
 }

@@ -90,9 +90,4 @@ public class RouteController {
         model.addAttribute("allRoutes", routeRepository.findRoutesByAuthor_Id(this.loggedUser.getId()));
         return "routes";
     }
-
-//    @ModelAttribute
-//    public List<Route> getAllRoute() {
-//        return routeRepository.findAll();
-//    }
 }
