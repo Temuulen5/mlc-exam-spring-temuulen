@@ -18,5 +18,4 @@ public class LoggedUser {
         this.age = 0;
         this.username = null;
     }
-
 }

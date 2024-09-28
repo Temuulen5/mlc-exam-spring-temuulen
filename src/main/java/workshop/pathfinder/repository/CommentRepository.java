@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     int countByRoute(Route route);
+
     List<Comment> findAllByRoute(Route route);
 }
