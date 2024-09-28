@@ -19,12 +19,6 @@ public class GlobalExceptionHandler {
     private final static String LOGIN_ERROR_1 = "during isValid call";
     private final static String INPUT_SIZE_ERROR = " [size must be between 10 and 2147483647]";
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public @ResponseBody ErrorInfo handle500Error(HttpServletRequest req, Exception ex) {
-//        return new ErrorInfo(req.getRequestURL().toString(), ex);
-//    }
-
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handle500Error(Model model, Exception ex) {
