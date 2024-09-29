@@ -12,6 +12,8 @@ import workshop.pathfinder.repository.UserRoleRepository;
 import workshop.pathfinder.service.RouteService;
 import workshop.pathfinder.service.UserService;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -37,10 +39,9 @@ public class HomeController {
     }
 
     @GetMapping()
-    public String index(Model model) {
-        this.routeService.FindMostCommentedRoute();
+    public String index(Model model, Principal principal) {
         model.addAttribute("mostCommentedRoute", this.mostCommentedRoute);
-
+        System.out.println(principal.getName()); //username
         return "index";
     }
 
