@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -39,7 +40,7 @@ public class SecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/users/login")
-                        .usernameParameter("username")
+                        .usernameParameter("userName")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/users/login?error=true")
@@ -57,6 +58,11 @@ public class SecurityConfig {
         authenticationManagerBuilder.userDetailsService(userDetailsService(userRepository));
         return authenticationManagerBuilder.build();
     }//new
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     @Bean

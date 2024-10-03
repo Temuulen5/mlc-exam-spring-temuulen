@@ -3,6 +3,8 @@ package workshop.pathfinder.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -17,15 +19,19 @@ import workshop.pathfinder.domain.DTOs.UserLoginForm;
 import workshop.pathfinder.domain.DTOs.UserRegisterForm;
 import workshop.pathfinder.service.UserService;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/users")
 public class AuthController {
     private final LoggedUser loggedUser;
     private final UserService userService;
+    private final AuthenticationManager authenticationManager;
 
-    public AuthController(LoggedUser loggedUser, UserService userService) {
+    public AuthController(LoggedUser loggedUser, UserService userService, AuthenticationManager authenticationManager) {
         this.loggedUser = loggedUser;
         this.userService = userService;
+        this.authenticationManager = authenticationManager;
     }
 
     @GetMapping("/profile/{id}")
@@ -77,12 +83,16 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute UserLoginForm userLoginForm, RedirectAttributes redirectAttributes,
-                        BindingResult bindingResult) {
+                        BindingResult bindingResult, Principal principal) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userLoginForm", userLoginForm)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userLoginForm", bindingResult);
             return "redirect:/users/login";
         }
+        Authentication authentication =
+                authenticationManager
+                        .authenticate(new UsernamePasswordAuthenticationToken(userLoginForm.getUserName(), userLoginForm.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         this.userService.LoginUser(userLoginForm);
         return "redirect:/";
     }
@@ -97,7 +107,7 @@ public class AuthController {
     @PostMapping("/profile/edit/{id}")
     public String editProfileData(@ModelAttribute ProfileEditForm profileEditForm,
                                   RedirectAttributes redirectAttributes,
-                                  BindingResult bindingResult) {
+                                  BindingResult bindingResult, @PathVariable String id) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("profileEditForm", profileEditForm)
                     .addFlashAttribute("org.springframework.validation.BindingResult.profileEditForm", bindingResult);
